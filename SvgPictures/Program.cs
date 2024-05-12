@@ -5,7 +5,7 @@ var pres = new Presentation();
 
 var shapes = pres.Slides[0].Shapes;
 
-var fileStream = File.OpenRead("cocktail-svgrepo-com.svg");
+var fileStream = File.OpenRead("Microsoft_Edge_logo_(2019).svg");
 
 fileStream.Position = 0;
 shapes.AddPicture(fileStream);
