@@ -1,24 +1,45 @@
-﻿using ShapeCrawler;
+﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
+using ShapeCrawler;
 
 var pres = new Presentation();
 var shapes = pres.Slides[0].Shapes;
 
-shapes.AddRectangle(48, 96, 96*2, 96);
-var shape = shapes[^1];
-shape.GeometryType = Geometry.RoundRectangle;
-shape.CornerSize = 0.5m;
+var outerMargin = 0.25m;
+var innerMargin = 0m;
+var pageWidth = 13 + 1 / 3m;
+var pageHeight = 7.5m;
+var itemWidth = 1;
+var itemHeight = 1;
+const decimal dpi = 96m;
 
-shapes.AddRectangle(48, 96*3, 96*2, 96*4);
-shape = shapes[^1];
-shape.GeometryType = Geometry.Round2SameRectangle;
-shape.CornerSize = 0.25m;
+var x = outerMargin;
+var y = outerMargin;
 
-shapes.AddRectangle(96*2, 96, 96, 96);
-shape = shapes[^1];
-shape.GeometryType = Geometry.Star5;
+foreach (var geo in Enum.GetValues(typeof(Geometry)).Cast<Geometry>())
+{
+    if (geo == Geometry.Custom)
+    {
+        continue;
+    }
 
-shapes.AddRectangle(96*3, 96, 96, 96);
-shape = shapes[^1];
-shape.GeometryType = Geometry.Ellipse;
+    shapes.AddRectangle((int)(x*dpi), (int)(y*dpi), (int)(itemWidth*dpi), (int)(itemHeight*dpi));
+    var shape = shapes[^1];
+    shape.GeometryType = geo;
+    shape.Text = geo.ToString();
+
+    x += itemWidth + innerMargin;
+    if (x + itemWidth > pageWidth)
+    {
+        x = outerMargin;
+        y += itemHeight + innerMargin;
+
+        if (y + itemHeight > pageHeight)
+        {
+            y = outerMargin;
+            pres.Slides.AddEmptySlide(SlideLayoutType.Blank);
+            shapes = pres.Slides[^1].Shapes;
+        } 
+    }
+}
 
 pres.SaveAs("out/Shape.SetGeometry.pptx");
