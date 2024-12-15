@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgPictures", "SvgPictures\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Issue-649-AddPicture", "Issue-649-AddPicture\Issue-649-AddPicture.csproj", "{FC1AB6A2-7F77-4C93-89C7-9A2474470826}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.SetGeometry", "Shape.SetGeometry\Shape.SetGeometry.csproj", "{624EF16B-70C3-4D5B-A25B-A7C5ED39AABD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{FC1AB6A2-7F77-4C93-89C7-9A2474470826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC1AB6A2-7F77-4C93-89C7-9A2474470826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC1AB6A2-7F77-4C93-89C7-9A2474470826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624EF16B-70C3-4D5B-A25B-A7C5ED39AABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624EF16B-70C3-4D5B-A25B-A7C5ED39AABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624EF16B-70C3-4D5B-A25B-A7C5ED39AABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624EF16B-70C3-4D5B-A25B-A7C5ED39AABD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
