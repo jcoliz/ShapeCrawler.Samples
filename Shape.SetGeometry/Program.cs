@@ -22,9 +22,8 @@ foreach (var geo in Enum.GetValues(typeof(Geometry)).Cast<Geometry>())
         continue;
     }
 
-    shapes.AddRectangle((int)(x*dpi), (int)(y*dpi), (int)(itemWidth*dpi), (int)(itemHeight*dpi));
+    shapes.AddShape((int)(x*dpi), (int)(y*dpi), (int)(itemWidth*dpi), (int)(itemHeight*dpi), geo);
     var shape = shapes[^1];
-    shape.GeometryType = geo;
     shape.Text = geo.ToString();
 
     x += itemWidth + innerMargin;
