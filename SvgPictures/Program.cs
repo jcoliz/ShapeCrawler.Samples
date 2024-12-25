@@ -1,13 +1,12 @@
-﻿using ShapeCrawler;
-using Svg;
+﻿using System.Reflection;
+using ShapeCrawler;
 
 var pres = new Presentation();
-
 var shapes = pres.Slides[0].Shapes;
 
-var fileStream = File.OpenRead("Microsoft_Edge_logo_(2019).svg");
-
-fileStream.Position = 0;
+var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+var sourceFileName = assemblyName + ".Microsoft_Edge_logo_(2019).svg";
+var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(sourceFileName)!;
 shapes.AddPicture(fileStream);
 
 shapes.AddPicture(fileStream);
@@ -34,4 +33,7 @@ picture.X += 600;
 picture.Width = 96;
 picture.Height = 96;
 
-pres.SaveAs("out/svg-array.pptx");
+var filename = $"out/{assemblyName}.pptx";
+Directory.CreateDirectory(Path.GetDirectoryName(filename)!);
+File.Delete(filename);
+pres.SaveAs(filename);

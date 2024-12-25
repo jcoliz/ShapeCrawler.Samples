@@ -11,4 +11,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Microsoft_Edge_logo_(2019).svg" />
+    <EmbeddedResource Include="Microsoft_Edge_logo_(2019).svg" />
+  </ItemGroup>
+
 </Project>
