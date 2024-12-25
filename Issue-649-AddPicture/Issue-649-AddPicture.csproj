@@ -12,4 +12,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="picture.png" />
+    <EmbeddedResource Include="picture.png" />
+    <Content Remove="picture-adding.pptx" />
+    <EmbeddedResource Include="picture-adding.pptx" />
+  </ItemGroup>
+
 </Project>

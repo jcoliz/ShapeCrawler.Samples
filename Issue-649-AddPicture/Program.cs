@@ -1,10 +1,17 @@
-﻿//using DocumentFormat.OpenXml.Presentation;
-
+﻿using System.Reflection;
 using ShapeCrawler;
 
-var pres = new Presentation("picture-adding.pptx");
-using var image = new FileStream("picture.png", FileMode.Open, FileAccess.Read);
+var assemblyName = Assembly.GetExecutingAssembly().GetName().Name!.Replace('-', '_');
+var pptxFileName = assemblyName + ".picture-adding.pptx";
+var pptxStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(pptxFileName)!;
+var pres = new Presentation(pptxStream);
 
-pres.Slides[0].Shapes.AddPicture(image);
+var imageFileName = assemblyName + ".picture.png";
+var imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(imageFileName)!;
 
-pres.SaveAs("picture-added.pptx");
+pres.Slides[0].Shapes.AddPicture(imageStream);
+
+var filename = $"out/{assemblyName}.pptx";
+Directory.CreateDirectory(Path.GetDirectoryName(filename)!);
+File.Delete(filename);
+pres.SaveAs(filename);
