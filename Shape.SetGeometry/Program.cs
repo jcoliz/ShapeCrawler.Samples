@@ -1,4 +1,4 @@
-﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
+﻿using System.Reflection;
 using ShapeCrawler;
 
 var pres = new Presentation();
@@ -41,4 +41,8 @@ foreach (var geo in Enum.GetValues(typeof(Geometry)).Cast<Geometry>())
     }
 }
 
-pres.SaveAs("out/Shape.SetGeometry.pptx");
+var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+var filename = $"out/{assemblyName}.pptx";
+Directory.CreateDirectory(Path.GetDirectoryName(filename)!);
+File.Delete(filename);
+pres.SaveAs(filename);
