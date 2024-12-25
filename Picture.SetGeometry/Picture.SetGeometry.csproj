@@ -11,4 +11,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="2x2.svg" />
+    <EmbeddedResource Include="2x2.svg" />
+  </ItemGroup>
+
 </Project>
